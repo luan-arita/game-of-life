@@ -1,0 +1,1 @@
+load_board_state("toad.txt")
