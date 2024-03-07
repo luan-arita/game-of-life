@@ -1,8 +1,19 @@
 import random
-import time
-import numpy as np
+#import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
+from matplotlib import colors
+import argparse
+import langton, seeds, brians
+
+
+parser = argparse.ArgumentParser(description = "Conway's Game of Life")
+parser.add_argument("-w", "--width", type = int, help = "Choose board's width.", default = 100)
+parser.add_argument("-hs", "--height", type = int, help = "Choose board's height.", default = 100)
+parser.add_argument("-g", "--game", type = int, choices = [1, 2, 3, 4], default = 1)
+parser.add_argument("-f", "--file", type=argparse.FileType('r'), default = None)
+
+args = parser.parse_args()
 
 
 def dead_state(width, height):
@@ -66,99 +77,65 @@ def next_board_state(initial_board):
     return(next_board)
 
 def load_board_state(file):
-    f = open(file, 'r')
+    #f = open(file, 'r')
     state = []
-    for line in f:
+    for line in file:
         state_row = []
         for character in line.strip():
             state_row.append(int(character))
         state.append(state_row)
-    f.close()
+    #f.close()
     return state
 
-def run_forever(init_state):
-    next_state = init_state
+def run_forever(init_state, next_state_func):
+    
     fig = plt.figure()
 
     plt.grid(True)
     plt.rc('grid', linestyle="-", color='white')
+    cmap = colors.ListedColormap(['black', 'white', 'deepskyblue'])
+    bounds = [0, 1, 2, 3]
+    norm = colors.BoundaryNorm(bounds, cmap.N)
 
-    im = plt.imshow(init_state, cmap = plt.cm.gray)
+    im = plt.imshow(init_state,interpolation = 'nearest', cmap = cmap, norm = norm)
 
     def update(frame):
         nonlocal init_state
-        init_state = next_board_state(init_state)
+        init_state = next_state_func(init_state)
         im.set_array(init_state)
         return im,
 
-    anim = FuncAnimation(fig, update, frames = 50, interval = 1000/60, blit = True)
+    anim = FuncAnimation(fig, update, frames = 50, interval = 1000/30, blit = True)
 
     return anim
 
-def move_ant(board, ant_position, ant_direction):
+if args.file:
+    board = load_board_state(args.file)
+    if args.game == 1:
+        anim = run_forever(board, next_board_state)
+    elif args.game == 2:
+        width = len(board[0])
+        height = len(board)
+        ant_position = [width // 2, height // 2]
+        anim = langton.run_langton(board, ant_position)
+    elif args.game == 3:
+        anim = run_forever(board, seeds.seeds)
+    elif args.game == 4:
+        anim = run_forever(board, brians.brians_brain)
+else:
+    if args.game == 1:
+        board = random_state(args.width, args.height)
+        anim = run_forever(board, next_board_state)
+    elif args.game == 2:
+        board = dead_state(args.width, args.height)
+        width = len(board[0])
+        height = len(board)
+        ant_position = [width // 2, height // 2]
+        anim = langton.run_langton(board, ant_position)
+    elif args.game == 3:
+        board = random_state(args.width, args.height)
+        anim = run_forever(board, brians.brians_brain)
 
-    if ant_direction == 'up':
-        ant_position[1] += 1
-    elif ant_direction == 'right':
-        ant_position[0] += 1
-    elif ant_direction == 'down':
-        ant_position[1] -= 1
-    elif ant_direction == 'left':
-        ant_position[0] -= 1
-    
-    if board[ant_position[0]][ant_position[1]] == 0:
-        board[ant_position[0]][ant_position[1]] = 1
-        if ant_direction == 'up':
-            ant_direction = 'right'
-        elif ant_direction == 'right':
-            ant_direction = 'down'
-        elif ant_direction == 'down':
-            ant_direction = 'left'
-        elif ant_direction == 'left':
-            ant_direction = 'up'
-
-    else:
-        board[ant_position[0]][ant_position[1]] = 0
-        if ant_direction == 'up':
-            ant_direction = 'left'
-        elif ant_direction == 'left':
-            ant_direction = 'down'
-        elif ant_direction == 'down':
-            ant_direction = 'right'
-        elif ant_direction == 'right':
-            ant_direction = 'up'
-    return ant_direction
+plt.show()
 
 
-ant_direction = 'up'
-
-def run_langton(board, ant_position):
-    
-    fig = plt.figure()
-    ax = fig.add_subplot(111)
-    im = plt.imshow(board, interpolation='none', cmap = plt.cm.gray, vmin=0, vmax=1)
-    
-    def animate(frame, ant_position):
-        global ant_direction
-        ant_direction = move_ant(board, ant_position, ant_direction)
-        im.set_array(board)
-
-        return im,
-
-    anim = FuncAnimation(fig, animate, frames = 50, interval = 0.5, blit = True, fargs = (ant_position,))
-
-    return anim
-
-
-def start_animation():
-    #board = random_state(200, 200)
-    board = dead_state(100, 100)
-    width = len(board[0])
-    height = len(board)
-    ant_position = [width // 2, height // 2]
-    #board = load_board_state("pulsar.txt")
-    #anim = run_forever(board)
-    anim2 = run_langton(board, ant_position)
-    plt.show()
-
-start_animation()
