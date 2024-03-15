@@ -9,8 +9,6 @@ The Conway's Game of Life is a cellular automaton. A cellular automaton consists
 
 By creating a initial pattern, which could be a random set of alive and dead cells or predefined formations, we can watch how births and deaths happen simultaneously to every cell and create unbelievably complex and beautiful patterns.
 
-Therefore, the "game" is actually a zero-player game, meaning that its evolution is determined by its initial state, needing no input from human players. You just interact with the Game of Life by creating an initial configuration and observe how it evolves.
-
 ## Other Cellular Automata
 
 ### Langton's Ant
@@ -23,9 +21,7 @@ These simple rules end up creating distinct modes of behavior. The ant starts ou
 
 ### Brian's Brain
 
-Besides the alive or dead, this cellular automaton adds a third "dying" state. Each cell is considered to have eight neighbors, as in Conway's Game of Life. In each time step, the same rules from Conway's are applied, however all cells that were "alive" go into the "dying" state instead, which does not count as "alive" in the neighbor count and prevents any cell from being born there. Cells that were already in the dying state then goes into the dead state.
-
-
+It adds a third "dying" state. All cells that were alive go into the dying state, and cells that were already in the dying state goes into the dead state. By setting a third color to this new state, new patterns can be watched.
 
 # Usage
 
@@ -43,11 +39,28 @@ options:
   
   `-g {1,2,3,4}, --game {1,2,3,4}`:   Choose which cellular automata you want to run. 1 is the default Game of Life, 2 is Langton's Ant, 3 is Seeds and 4 is Brian's Brain. 
     
-  `-f FILE, --file FILE`
+  `-f FILE, --file`:                  Choose file for assigning initial state of the board.
+
+  # Features
 
   By default, the board will be 100x100 and the initial state for the Game of Life will be a random one.
 
-# Features
+  By using _matplotlib's_ `FuncAnimation`, life can be watched.
+  
+  ![game-of-life](https://github.com/luan-arita/game-of-life/assets/35427506/3484f38a-e9f8-4cb0-85fa-3285b9df2293)
 
-- Conway's Game of Life. 
+  Also features file input:
+  
+  ![gosper-glider-gun](https://github.com/luan-arita/game-of-life/assets/35427506/42296ea4-e11e-44b0-bc3a-cad9e7a83a3a)
 
+  Other cellular automata:
+
+  ![brians-brain](https://github.com/luan-arita/game-of-life/assets/35427506/81e4f9aa-cffd-4319-9988-0cd19954d04e)
+
+
+  
+  
+
+  
+
+  
