@@ -66,6 +66,6 @@ It adds a third "dying" state. All cells that were alive go into the dying state
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/sathwikmatsa/ASCII-art/blob/master/LICENSE) file for details
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/luan-arita/game-of-life/blob/main/LICENSE) file for details
 
   
