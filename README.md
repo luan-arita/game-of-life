@@ -11,7 +11,7 @@ By creating a initial pattern, which could be a random set of alive and dead cel
 
 # Usage
 
-Type in terminal:  ```python -u main.py imageFilename [-i] [-c] [-m {1, 2, 3}] [-hs HEIGHT]```
+Type in terminal:  ```python -u main.py [-w WIDTH] [-hs HEIGHT] [-g {1, 2, 3 4}] [-f] FILENAME```
 
 
 options:
