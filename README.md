@@ -9,25 +9,10 @@ The Conway's Game of Life is a cellular automaton. A cellular automaton consists
 
 By creating a initial pattern, which could be a random set of alive and dead cells or predefined formations, we can watch how births and deaths happen simultaneously to every cell and create unbelievably complex and beautiful patterns.
 
-## Other Cellular Automata
-
-### Langton's Ant
-Instead of a cell being dead or alive, these rules define the movement of a ant in a plane. The squares in a plane are colored black or white, and we arbitrarily identify one square as being the ant. The ant moves according to these rules:
-1. At a white square, turn 90° clockwise, flip the color of the square and move forward one unit.
-2. At a black square, turn 90° counter-clockwise, flip the color of the square and move forward one unit.
-![](https://upload.wikimedia.org/wikipedia/commons/0/09/LangtonsAntAnimated.gif)
-
-These simple rules end up creating distinct modes of behavior. The ant starts out by creating simple patterns which are often symmetric. After a few hundred moves, it starts moving in irregular patterns and it traces a pseudo-random path until around 10,000 steps. The ant ends up finding order amidst the chaos, and starts building a "highway pattern" which repeats indefinitely.
-
-### Brian's Brain
-
-It adds a third "dying" state. All cells that were alive go into the dying state, and cells that were already in the dying state goes into the dead state. By setting a third color to this new state, new patterns can be watched.
-
 # Usage
 
-```python -u main.py imageFilename [-i] [-c] [-m {1, 2, 3}] [-hs HEIGHT]```
+Type in terminal:  ```python -u main.py imageFilename [-i] [-c] [-m {1, 2, 3}] [-hs HEIGHT]```
 
-Conway's Game of Life
 
 options:
 
@@ -53,14 +38,34 @@ options:
   
   ![gosper-glider-gun](https://github.com/luan-arita/game-of-life/assets/35427506/42296ea4-e11e-44b0-bc3a-cad9e7a83a3a)
 
-  Other cellular automata:
+  Features other cellular automata:
+
+**  - Langton's Ant:**
+Instead of a cell being dead or alive, these rules define the movement of a ant in a plane. The squares in a plane are colored black or white, and we arbitrarily identify one square as being the ant. The ant moves according to these rules:
+
+1. At a white square, turn 90° clockwise, flip the color of the square and move forward one unit.
+2. At a black square, turn 90° counter-clockwise, flip the color of the square and move forward one unit.
+
+These simple rules end up creating distinct modes of behavior. The ant starts out by creating simple patterns which are often symmetric. After a few hundred moves, it starts moving in irregular patterns and it traces a pseudo-random path until around 10,000 steps. The ant ends up finding order amidst the chaos, and starts building a "highway pattern" which repeats indefinitely.
+
+![langtons-ant](https://github.com/luan-arita/game-of-life/assets/35427506/411d1051-de01-4301-9b70-b50af10b665a)
+
+** - Brian's Brain: **
+
+It adds a third "dying" state. All cells that were alive go into the dying state, and cells that were already in the dying state goes into the dead state. By setting a third color to this new state, new patterns can be watched.
 
   ![brians-brain](https://github.com/luan-arita/game-of-life/assets/35427506/81e4f9aa-cffd-4319-9988-0cd19954d04e)
 
 
-  
-  
+## Contact
 
-  
+[Luan Arita](https://www.linkedin.com/in/luan-arita-319870262/) - luan.arita@unesp.br
+
+## Acknowledgements
+* [Robert Heaton](https://robertheaton.com/2018/07/20/project-2-game-of-life/) for guiding on how to make this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/sathwikmatsa/ASCII-art/blob/master/LICENSE) file for details
 
   
