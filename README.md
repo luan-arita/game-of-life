@@ -41,12 +41,12 @@ options:
   Features other cellular automata:
 
   - Langton's Ant:
-Instead of a cell being dead or alive, these rules define the movement of a ant in a plane. The squares in a plane are colored black or white, and we arbitrarily identify one square as being the ant. The ant moves according to these rules:
+The ant moves according to these rules:
 
 1. At a white square, turn 90° clockwise, flip the color of the square and move forward one unit.
 2. At a black square, turn 90° counter-clockwise, flip the color of the square and move forward one unit.
 
-These simple rules end up creating distinct modes of behavior. The ant starts out by creating simple patterns which are often symmetric. After a few hundred moves, it starts moving in irregular patterns and it traces a pseudo-random path until around 10,000 steps. The ant ends up finding order amidst the chaos, and starts building a "highway pattern" which repeats indefinitely.
+The ant starts out by creating simple patterns which are often symmetric. After a few hundred moves, it starts moving in irregular patterns and it traces a pseudo-random path until around 10,000 steps. The ant ends up finding order amidst the chaos, and starts building a "highway pattern" which repeats indefinitely.
 
 ![langtons-ant](https://github.com/luan-arita/game-of-life/assets/35427506/411d1051-de01-4301-9b70-b50af10b665a)
 
