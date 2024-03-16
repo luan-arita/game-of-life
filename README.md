@@ -1,6 +1,6 @@
 # Conway's Game of Life
 
-The Conway's Game of Life is a cellular automaton. A cellular automaton consists of a regular grid of cells, where each one is described by a kind of state (such as on/off or live/dead). Each cell interacts with eight of its neighbours, which are the cells directly adjacent to it. At each step of time, each cell updates its own state according to four rules:
+The Conway's Game of Life is actually a zero player game, representing a cellular automaton. Each cell interacts with eight of its neighbours, which are the cells directly adjacent to it. At each step of time, each cell updates its own state according to four rules:
 
 1. Any live cell with 0 or 1 live neighbors become dead, because of underpopulation
 2. Any live cell with 2 or 3 live neighbors stays alive, because its neighborhood is just right
@@ -41,6 +41,7 @@ options:
   Features other cellular automata:
 
   - Langton's Ant:
+
 The ant moves according to these rules:
 
 1. At a white square, turn 90° clockwise, flip the color of the square and move forward one unit.
