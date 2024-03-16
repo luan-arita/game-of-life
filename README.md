@@ -32,11 +32,11 @@ options:
 
   By using _matplotlib's_ `FuncAnimation`, life can be watched.
   
-  ![game-of-life](https://github.com/luan-arita/game-of-life/assets/35427506/3484f38a-e9f8-4cb0-85fa-3285b9df2293)
+<img src = "https://github.com/luan-arita/game-of-life/assets/35427506/3484f38a-e9f8-4cb0-85fa-3285b9df2293" width = "600">
 
   Also features file input:
   
-  ![gosper-glider-gun](https://github.com/luan-arita/game-of-life/assets/35427506/42296ea4-e11e-44b0-bc3a-cad9e7a83a3a)
+  <img src = "https://github.com/luan-arita/game-of-life/assets/35427506/42296ea4-e11e-44b0-bc3a-cad9e7a83a3a" width = "600">
 
   Features other cellular automata:
 
@@ -49,13 +49,13 @@ The ant moves according to these rules:
 
 The ant starts out by creating simple patterns which are often symmetric. After a few hundred moves, it starts moving in irregular patterns and it traces a pseudo-random path until around 10,000 steps. The ant ends up finding order amidst the chaos, and starts building a "highway pattern" which repeats indefinitely.
 
-![langtons-ant](https://github.com/luan-arita/game-of-life/assets/35427506/411d1051-de01-4301-9b70-b50af10b665a)
+<img src = "https://github.com/luan-arita/game-of-life/assets/35427506/411d1051-de01-4301-9b70-b50af10b665a" width = "600">
 
  - Brian's Brain: 
 
 It adds a third "dying" state. All cells that were alive go into the dying state, and cells that were already in the dying state goes into the dead state. By setting a third color to this new state, new patterns can be watched.
 
-  ![brians-brain](https://github.com/luan-arita/game-of-life/assets/35427506/81e4f9aa-cffd-4319-9988-0cd19954d04e)
+<img src = "https://github.com/luan-arita/game-of-life/assets/35427506/81e4f9aa-cffd-4319-9988-0cd19954d04e" width = "600">
 
 
 ## Contact
