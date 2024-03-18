@@ -3,14 +3,15 @@ import random
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from matplotlib import colors
+from matplotlib import animation
 import argparse
-import langton, seeds, brians
+import langton, seeds, brians, rockpaperscissors
 
 
 parser = argparse.ArgumentParser(description = "Conway's Game of Life")
 parser.add_argument("-w", "--width", type = int, help = "Choose board's width.", default = 100)
 parser.add_argument("-hs", "--height", type = int, help = "Choose board's height.", default = 100)
-parser.add_argument("-g", "--game", type = int, choices = [1, 2, 3, 4], default = 1)
+parser.add_argument("-g", "--game", type = int, choices = [1, 2, 3, 4, 5], default = 1, help = " Choose which cellular automata you want to run. 1 is the default Game of Life, 2 is Langton's Ant, 3 is Seeds, 4 is Brian's Brain and 5 is Rock Paper Scissors.")
 parser.add_argument("-f", "--file", type=argparse.FileType('r'), default = None)
 
 args = parser.parse_args()
@@ -57,9 +58,9 @@ def next_board_state(initial_board):
             counts = 0
             for dy in (-1, 0, 1):
                 for dx in (-1, 0, 1):
-                    nx, ny = x + dx, y + dy
                     if dx == 0 and dy == 0:
                         continue
+                    nx, ny = x + dx, y + dy
                     if 0 <= nx < height and 0 <= ny < width:
                         if initial_board[nx][ny] == 1:
                             counts += 1
@@ -91,7 +92,8 @@ def run_forever(init_state, next_state_func):
     
     fig = plt.figure()
 
-    plt.grid(True)
+    plt.box(on=None)
+    plt.axis('off')
     plt.rc('grid', linestyle="-", color='white')
     cmap = colors.ListedColormap(['black', 'white', 'deepskyblue'])
     bounds = [0, 1, 2, 3]
@@ -105,7 +107,7 @@ def run_forever(init_state, next_state_func):
         im.set_array(init_state)
         return im,
 
-    anim = FuncAnimation(fig, update, frames = 50, interval = 1000/30, blit = True)
+    anim = FuncAnimation(fig, update, frames = 150, interval = 1000/30, blit = True)
 
     return anim
 
@@ -134,8 +136,22 @@ else:
         anim = langton.run_langton(board, ant_position)
     elif args.game == 3:
         board = random_state(args.width, args.height)
+        anim = run_forever(board, seeds.seeds)
+    elif args.game == 4:
+        board = random_state(args.width, args.height)
         anim = run_forever(board, brians.brians_brain)
+    elif args.game == 5:
+        board = rockpaperscissors.board_rps(args.height)
+        anim = rockpaperscissors.run_forever_rps(board, rockpaperscissors.next_board_state_rps)
 
-plt.show()
+#plt.show()
+
+def save_gif():
+    f = r"c:\Users\Luan\Desktop\faculdade\Python\game-of-life\animation.gif" 
+    writergif = animation.PillowWriter(fps=15) 
+    anim.save(f, writer=writergif)
+
+save_gif()
+
 
 
