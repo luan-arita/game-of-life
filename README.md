@@ -32,7 +32,9 @@ options:
 
   By using _matplotlib's_ `FuncAnimation`, life can be watched.
   
-<img src = "https://github.com/luan-arita/game-of-life/assets/35427506/3484f38a-e9f8-4cb0-85fa-3285b9df2293" width = "600">
+<img src = "https://github.com/luan-arita/game-of-life/assets/35427506/fd0e8886-c0e6-40b6-a5ca-7c663eecba30" width = "600">
+
+
 
   Also features file input:
   
@@ -40,7 +42,7 @@ options:
 
   Features other cellular automata:
 
-  - Langton's Ant:
+  ### Langton's Ant:
 
 The ant moves according to these rules:
 
@@ -51,11 +53,18 @@ The ant starts out by creating simple patterns which are often symmetric. After 
 
 <img src = "https://github.com/luan-arita/game-of-life/assets/35427506/411d1051-de01-4301-9b70-b50af10b665a" width = "600">
 
- - Brian's Brain: 
+ ### Brian's Brain: 
 
 It adds a third "dying" state. All cells that were alive go into the dying state, and cells that were already in the dying state goes into the dead state. By setting a third color to this new state, new patterns can be watched.
 
-<img src = "https://github.com/luan-arita/game-of-life/assets/35427506/81e4f9aa-cffd-4319-9988-0cd19954d04e" width = "600">
+<img src = "https://github.com/luan-arita/game-of-life/assets/35427506/4a231cb9-2b0b-4a2d-a2bd-a873da8ebd18" width = "600">
+
+
+### Rock Paper Scissors automaton
+
+Every cell picks a random neighbor, they both play RPS and the loser takes the winner's color. Credits to [luciopaiva](https://www.reddit.com/r/cellular_automata/comments/figqjt/rock_paper_scissors_automaton/) for the idea.
+
+<img src = "https://github.com/luan-arita/game-of-life/assets/35427506/9bfe2a12-6f53-4a51-8683-2e5b6beb9d41" width = "600">
 
 
 ## Contact
